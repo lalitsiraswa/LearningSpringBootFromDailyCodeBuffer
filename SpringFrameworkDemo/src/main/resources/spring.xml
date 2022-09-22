@@ -10,8 +10,9 @@
 <!--    <bean id="employee"  class="com.howtodoinjava.spring.beans.Employee"></bean>-->
 <!--    <bean id="department"  class="com.howtodoinjava.spring.beans.Department"></bean>-->
     <bean id="doctor" class="com.dailycodebuffer.SpringFrameworkDemo.demo.Doctor">
-        <property name="qualification" value="MBBS"></property>
-        <property name="nurse" ref="nurse"></property>
+        <constructor-arg value="MBBS"></constructor-arg>
+<!--        <property name="qualification" value="MBBS"></property>-->
+<!--        <property name="nurse" ref="nurse"></property>-->
     </bean>
     <bean id="nurse" class="com.dailycodebuffer.SpringFrameworkDemo.demo.Nurse"></bean>
 </beans>

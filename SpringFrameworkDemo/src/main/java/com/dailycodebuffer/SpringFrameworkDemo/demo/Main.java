@@ -18,8 +18,12 @@ public class Main {
 //        staff = context.getBean(Nurse.class);
 //        staff.assist();
         //----------------------------------------------
+//        Doctor doctor = context.getBean(Doctor.class);
+//        System.out.println(doctor.getQualification());
+//        doctor.getNurse().assist();
+        //----------------------------------------------
         Doctor doctor = context.getBean(Doctor.class);
+        doctor.assist();
         System.out.println(doctor.getQualification());
-        doctor.getNurse().assist();
     }
 }
