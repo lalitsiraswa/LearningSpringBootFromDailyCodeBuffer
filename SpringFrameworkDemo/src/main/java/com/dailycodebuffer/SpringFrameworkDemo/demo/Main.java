@@ -11,11 +11,11 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 
         Doctor doctor = context.getBean(Doctor.class);
-//        doctor.assist();
+        doctor.assist();
         doctor.setQualification("MBBS");
         System.out.println(doctor);
 
-        Doctor doctor1 = context.getBean(Doctor.class);
-        System.out.println(doctor1);
+//        Doctor doctor1 = context.getBean(Doctor.class);
+//        System.out.println(doctor1);
     }
 }
