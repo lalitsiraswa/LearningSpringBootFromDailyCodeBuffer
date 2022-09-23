@@ -1,7 +1,7 @@
 package com.dailycodebuffer.SpringFrameworkDemo.demo;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Doctor implements Staff{
     public void assist() {
         System.out.println("Doctor is assisting!");
