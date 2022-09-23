@@ -2,8 +2,9 @@ package com.dailycodebuffer.SpringFrameworkDemo.demo;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component
-@Scope(scopeName = "singleton") // Default scope of a Bean
+//@Scope(scopeName = "singleton") // Default scope of a Bean
+@Component // We need to use this for prototype bean scope
+@Scope(scopeName = "prototype") // New object will be created every time
 public class Doctor implements Staff{
 
     private String qualification;
