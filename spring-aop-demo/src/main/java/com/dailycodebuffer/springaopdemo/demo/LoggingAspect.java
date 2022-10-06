@@ -1,8 +1,6 @@
 package com.dailycodebuffer.springaopdemo.demo;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -23,5 +21,13 @@ public class LoggingAspect {
 //        System.out.println(joinPoint.getArgs()[0]);
         String arg = joinPoint.getArgs()[0].toString();
         System.out.println("After Loggers! with argument : " + arg);
+    }
+    @Pointcut("execution(* com.dailycodebuffer.springaopdemo.demo.ShoppingCart.quantity())")
+    public void afterReturningPointCut(){
+
+    }
+    @AfterReturning(pointcut = "afterReturningPointCut()", returning = "retVal")
+    public void afterReturning(int retVal){
+        System.out.println("After Returning with return value : " + retVal);
     }
 }

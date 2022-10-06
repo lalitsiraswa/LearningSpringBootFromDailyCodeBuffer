@@ -13,4 +13,7 @@ public class ShoppingCart {
     public void testFunction(){
         System.out.println("Test Method From ShoppingCart Called");
     }
+    public int quantity(){
+        return 6;
+    }
 }
