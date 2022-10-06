@@ -10,4 +10,7 @@ public class ShoppingCart {
         // Sanitize the Data
         System.out.println("Checkout Method From ShoppingCart Called");
     }
+    public void testFunction(){
+        System.out.println("Test Method From ShoppingCart Called");
+    }
 }
