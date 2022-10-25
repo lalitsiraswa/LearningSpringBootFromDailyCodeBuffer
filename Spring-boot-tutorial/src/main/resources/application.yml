@@ -1,0 +1,34 @@
+server:
+  port: '8082'
+
+welcome:
+  message: Welcome to the world of Programming!!
+
+# Spring Boot Query Methods
+# https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference#
+
+#----------------- H2 DataBase Configuration ----------------
+#spring:
+#  h2:
+#    console:
+#      enabled: 'true'
+#  datasource:
+#    username: lalit
+#    url: jdbc:h2:mem:dcbapp
+#    driverClassName: org.h2.Driver
+#    password: siraswa
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+
+#----------------- MySql DataBase Configuration ----------------
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp
+    password: ro$iWx4x
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
