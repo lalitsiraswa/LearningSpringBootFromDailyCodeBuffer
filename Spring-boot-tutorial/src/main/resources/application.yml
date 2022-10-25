@@ -1,8 +1,9 @@
 server:
   port: '8082'
 
-welcome:
-  message: Welcome to the world of Programming!!
+spring:
+  profiles:
+    active: qa
 
 # Spring Boot Query Methods
 # https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference#
@@ -20,8 +21,12 @@ welcome:
 #  jpa:
 #    database-platform: org.hibernate.dialect.H2Dialect
 
+# --- these (3---) indicates starting of new document
+# Dev Profile
+---
 #----------------- MySql DataBase Configuration ----------------
 spring:
+  profiles: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
@@ -31,4 +36,37 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
+welcome:
+  message: Welcome to the world of Programming!!
 
+# QA profile
+---
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    password: ro$iWx4x
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome to the world of Programming!!
+
+# Prod Profile
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+    password: ro$iWx4x
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome to the world of Programming!!
