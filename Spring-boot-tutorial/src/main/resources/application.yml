@@ -55,6 +55,13 @@ spring:
 welcome:
   message: Welcome to the world of Programming!!
 
+# It includes or enables all the endpoints of /actuator.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 # Prod Profile
 ---
 spring:
