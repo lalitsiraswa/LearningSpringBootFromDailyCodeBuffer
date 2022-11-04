@@ -38,7 +38,6 @@ public class Student {
             nullable = false
     ) // This is how we will define the name of the column
     private String emailId;
-    private String guardianName;
-    private String guardianEmail;
-    private String guardianMobile;
+    @Embedded
+    private Guardian guardian;
 }
