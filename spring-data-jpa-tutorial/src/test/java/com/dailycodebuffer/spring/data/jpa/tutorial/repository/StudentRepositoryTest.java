@@ -18,9 +18,9 @@ class StudentRepositoryTest {
     @Test
     public void saveStudent(){
         Student student = Student.builder()
-                .emailId("laviksiraswa@gmail.com")
-                .firstName("Lavik")
-                .lastName("Siraswa")
+                .emailId("rameshkumar@gmail.com")
+                .firstName("Ramesh")
+                .lastName("Kumar")
                 // .guardianName("Siraswa")
                 // .guardianEmail("siraswa@gmail.com")
                 // .guardianMobile("7684756738")
@@ -30,22 +30,37 @@ class StudentRepositoryTest {
     @Test
     public void saveStudentWithGuardian(){
         Guardian guardian = Guardian.builder()
-                .name("Nikhil")
-                .email("nikhil@gmail.com")
-                .mobile("7684756376")
+                .name("Sheetal Sharma")
+                .email("sheetalsharma@gmail.com")
+                .mobile("8693748576")
                 .build();
         Student student = Student.builder()
-                .firstName("Shivam")
-                .emailId("shivam@gmail.com")
-                .lastName("Kumar")
+                .firstName("Nidhi")
+                .emailId("nidhi_sharma@gmail.com")
+                .lastName("")
                 .guardian(guardian)
                 .build();
 
         studentRepository.save(student);
     }
     @Test
+    public void printStudentByFirstName(){
+        List<Student> studentList = studentRepository.findByFirstName("Ramesh");
+        System.out.println("studentList : " + studentList);
+    }
+    @Test
+    public void printStudentByFirstNameContaining(){
+        List<Student> studentList = studentRepository.findByFirstNameContaining("vik");
+        System.out.println("studentList : " + studentList);
+    }
+    @Test
     public void printAllStudent(){
         List<Student> studentList = studentRepository.findAll();
+        System.out.println("studentList : " + studentList);
+    }
+    @Test
+    public void printStudentBasedOnGuardianName(){
+        List<Student> studentList = studentRepository.findByGuardianName("Nikhil");
         System.out.println("studentList : " + studentList);
     }
 }
