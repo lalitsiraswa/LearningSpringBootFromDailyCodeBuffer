@@ -63,4 +63,14 @@ class StudentRepositoryTest {
         List<Student> studentList = studentRepository.findByGuardianName("Nikhil");
         System.out.println("studentList : " + studentList);
     }
+    @Test
+    public void printGetStudentByEmailAddress(){
+        Student student = studentRepository.getStudentByEmailAddress("nidhi_sharma@gmail.com");
+        System.out.println("student : " + student);
+    }
+    @Test
+    public void printGetStudentFirstNameByEmailAddress(){
+        String studentFirstName = studentRepository.getStudentFirstNameByEmailAddress("nidhi_sharma@gmail.com");
+        System.out.println("Student First Name : " + studentFirstName);
+    }
 }
