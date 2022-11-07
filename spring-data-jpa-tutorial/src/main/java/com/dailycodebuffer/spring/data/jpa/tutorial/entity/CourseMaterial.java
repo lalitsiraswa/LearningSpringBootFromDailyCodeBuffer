@@ -8,7 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = "course")
+//@ToString(exclude = "course")
 public class CourseMaterial {
     @Id
     @SequenceGenerator(
@@ -24,9 +24,13 @@ public class CourseMaterial {
     private String url;
     // cascade enables to create and persist the course record(data) if it is not persist(store).
     // cascade enables to create and persist the child record(data) i.e course if it is not persist(store).
+
+    // fetch = FetchType.EAGER will fetch the Data for both child(attribute) and parent(attribute)
+    // fetch = FetchType.LAZY will fetch the Data only for parent(attribute)
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+//            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     @JoinColumn(
             name = "course_id",
