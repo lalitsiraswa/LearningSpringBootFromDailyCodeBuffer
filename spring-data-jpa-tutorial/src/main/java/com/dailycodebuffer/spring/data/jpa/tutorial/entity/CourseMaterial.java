@@ -1,8 +1,5 @@
 package com.dailycodebuffer.spring.data.jpa.tutorial.entity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = "course")
 public class CourseMaterial {
     @Id
     @SequenceGenerator(
@@ -24,9 +22,11 @@ public class CourseMaterial {
     )
     private Long courseMaterialId;
     private String url;
-    // cascade enables to create and persist the course record(data) if it is not persist(store).    
+    // cascade enables to create and persist the course record(data) if it is not persist(store).
+    // cascade enables to create and persist the child record(data) i.e course if it is not persist(store).
     @OneToOne(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
     @JoinColumn(
             name = "course_id",
