@@ -29,8 +29,12 @@ public class CourseMaterial {
     // fetch = FetchType.LAZY will fetch the Data only for parent(attribute)
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
 //            fetch = FetchType.EAGER
+
+            // (optional = false) This ensures that without course you cannot save the courseMaterial
+            // by-default (optional = true)
+            optional = false
     )
     @JoinColumn(
             name = "course_id",
