@@ -8,7 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@ToString(exclude = "course")
+@ToString(exclude = "course")
 public class CourseMaterial {
     @Id
     @SequenceGenerator(
@@ -29,8 +29,8 @@ public class CourseMaterial {
     // fetch = FetchType.LAZY will fetch the Data only for parent(attribute)
     @OneToOne(
             cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
+//            fetch = FetchType.EAGER
     )
     @JoinColumn(
             name = "course_id",
