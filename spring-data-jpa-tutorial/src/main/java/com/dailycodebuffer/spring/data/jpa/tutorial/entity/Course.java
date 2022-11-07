@@ -30,4 +30,16 @@ public class Course {
             mappedBy = "course"
     )
     private CourseMaterial courseMaterial;
+
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            // (optional = false) This ensures that without teacher you cannot save the course
+            // by-default (optional = true)
+            optional = false
+    )
+    @JoinColumn(
+            name = "teacher_id",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
 }
