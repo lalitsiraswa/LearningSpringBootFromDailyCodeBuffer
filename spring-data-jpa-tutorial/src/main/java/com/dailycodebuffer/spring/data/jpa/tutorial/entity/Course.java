@@ -26,6 +26,9 @@ public class Course {
     private String title;
     private Integer credit;
 
+    // The fetch attribute can be either FetchType.LAZY or FetchType.EAGER. By default, @OneToMany and @ManyToMany
+    // associations use the FetchType.LAZY strategy while the @OneToOne and @ManyToOne use the FetchType.EAGER
+    // strategy instead.
     @OneToOne(
             mappedBy = "course"
     )
