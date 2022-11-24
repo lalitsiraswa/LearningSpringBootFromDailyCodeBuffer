@@ -23,7 +23,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         userService.saveVerificationTokenForUser(token, user);
         // Send mail to the user
         String url = event.getApplicationUrl()
-                + "VerifyRegistration?token="
+                + "/VerifyRegistration?token="
                 + token;
         // We can implement sendVerificationEmail() method here.
         log.info("Click the link to verify you account: {}", url);

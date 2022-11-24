@@ -1,4 +1,5 @@
 package com.dailycodebuffer.client.service;
+
 import com.dailycodebuffer.client.entity.User;
 import com.dailycodebuffer.client.entity.VerificationToken;
 import com.dailycodebuffer.client.model.UserModel;
@@ -8,14 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private VerificationTokenRepository verificationTokenRepository;
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Override
     public User registerUser(UserModel userModel) {
         User user = new User();
@@ -32,5 +36,23 @@ public class UserServiceImpl implements UserService{
     public void saveVerificationTokenForUser(String token, User user) {
         VerificationToken verificationToken = new VerificationToken(token, user);
         verificationTokenRepository.save(verificationToken);
+    }
+
+    @Override
+    public String validateVerificationToken(String token) {
+        VerificationToken verificationToken = verificationTokenRepository.findByToken(token);
+        if (verificationToken == null) {
+            return "invalid";
+        }
+        User user = verificationToken.getUser();
+        Calendar calendar = Calendar.getInstance();
+        if ((verificationToken.getExpirationTime().getTime() -
+                calendar.getTime().getTime()) <= 0) {
+            verificationTokenRepository.delete(verificationToken);
+            return "expired";
+        }
+        user.setEnabled(true);
+        userRepository.save(user);
+        return "valid";
     }
 }
