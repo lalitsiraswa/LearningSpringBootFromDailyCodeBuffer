@@ -95,6 +95,16 @@ public class RegistrationController {
         log.info("Click the link to verify you account: {}", url);
     }
 
+    @PostMapping("/changePassword")
+    public String changePassword(@RequestBody PasswordModel passwordModel){
+        User user = userService.findUserByEmail(passwordModel.getEmail());
+        if(!userService.checkIfValidOldPassword(user, passwordModel.getOldPassword())){
+            return "Invalid Old Password!";
+        }
+        // Save new Password
+        userService.changePassword(user, passwordModel.getNewPassword());
+        return "Password Changes Successfully!";
+    }
     private String applicationUrl(HttpServletRequest request) {
         return "http://" + request.getServerName() +
                 ":" + request.getServerPort() +
